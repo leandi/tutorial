@@ -35,6 +35,8 @@ public class LoginView extends CustomComponent implements View, ClickListener {
 
     @Override
     public void enter(ViewChangeEvent event) {
+        
+        navigator = getUI().getNavigator();
 
         usernameField = new TextField("Username");
         passwordField = new PasswordField("Password");
