@@ -20,8 +20,8 @@ public class MyUI extends UI {
     protected void init(VaadinRequest request) {
         Navigator navigator = new Navigator(this, this);
         navigator.addProvider(viewProvider);
-        navigator.navigateTo("hello");
         navigator.navigateTo("login");
-    }
+        
+   }
 
 }
