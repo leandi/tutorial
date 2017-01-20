@@ -14,24 +14,21 @@ import java.io.Serializable;
  */
 @UIScoped
 public class UserInfo implements Serializable {
-    private String name;
+     private String name;
 
     public UserInfo() {
-        this.name = "Neznanec";
+        this.name = "stranger";
     }
 
     public UserInfo(String name) {
         this.name = name;
     }
-    
-        public String getName() {
+
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    
-
-    
 }
