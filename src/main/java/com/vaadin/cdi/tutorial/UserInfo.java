@@ -1,34 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vaadin.cdi.tutorial;
 
-import com.vaadin.cdi.UIScoped;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
-/**
- *
- * @author sandi
- */
+import com.vaadin.cdi.UIScoped;
+
 @UIScoped
 public class UserInfo implements Serializable {
-     private String name;
+    private User user;
+
+    private List<String> roles = new LinkedList<String>();
 
     public UserInfo() {
-        this.name = "stranger";
+        this.user = null;
     }
 
-    public UserInfo(String name) {
-        this.name = name;
+    public User getUser() {
+        return user;
     }
 
     public String getName() {
-        return name;
+        if (user == null) {
+            return "anonymous user";
+        } else {
+            return user.getName();
+        }
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser(User user) {
+        this.user = user;
+        roles.clear();
+        if (user != null) {
+            roles.add("user");
+            if (user.isAdmin()) {
+                roles.add("admin");
+            }
+        }
+    }
+
+    public List<String> getRoles() {
+        return roles;
     }
 }
