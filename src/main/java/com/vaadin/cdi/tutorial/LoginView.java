@@ -70,22 +70,9 @@ public class LoginView extends CustomComponent implements View, ClickListener {
 
         user.setUser(loginUser);
         if (navigator != null) {
-            navigator.navigateTo("hello");
+            navigator.navigateTo("chat");
         }
 
         
     }
-    private static final class WrongPasswordErrorMessage implements
-            ErrorMessage {
-
-        @Override
-        public ErrorLevel getErrorLevel() {
-            return ErrorLevel.ERROR;
-        }
-
-        @Override
-        public String getFormattedHtmlMessage() {
-            return "Wrong password!";
-        }
-    }    
 }
