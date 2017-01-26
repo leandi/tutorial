@@ -1,27 +1,25 @@
 package com.vaadin.cdi.tutorial;
 
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.cdi.CDIUI;
-import com.vaadin.cdi.CDIViewProvider;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 import javax.inject.Inject;
 //Branch IV B
 @Theme("valo")
 @CDIUI("")
+@Push
 @SuppressWarnings("serial")
 public class MyUI extends UI {
     
     @Inject
-    private CDIViewProvider viewProvider;
+    private javax.enterprise.event.Event<NavigationEvent> navigationEvent;
 
     @Override
     protected void init(VaadinRequest request) {
-        Navigator navigator = new Navigator(this, this);
-        navigator.addProvider(viewProvider);
-        navigator.navigateTo("login");
-        
-   }
+
+        navigationEvent.fire(new NavigationEvent("login"));
+    }
 
 }
